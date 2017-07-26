@@ -1,4 +1,4 @@
-import Yelp from 'yelp'
+import Yelp from 'yelp-v3'
 import yelpTokenSecret from '../../yelp.cfg.json'
 
 const yelp = new Yelp(yelpTokenSecret)
@@ -10,7 +10,7 @@ const services = {
   ? yelp.search(params).then(result =>
     (result.businesses
       ? result.businesses.map(B => ({
-        rating_img_url: B.rating_img_url,
+        review_count: B.review_count,
         id: B.id,
         name: B.name,
         image_url: B.image_url
@@ -19,11 +19,11 @@ const services = {
     ))
   : false),
   business: {
-    service: params => yelp.business(params),
+    service: params => yelp.businesses(params),
     selector: B => ({
       name: B.name,
-      mobile_url: B.mobile_url,
-      rating_img_url_small: B.rating_img_url_small,
+      id: B.id,
+      rating: B.rating,
       url: B.url,
       phone: B.phone,
       image_url: B.image_url

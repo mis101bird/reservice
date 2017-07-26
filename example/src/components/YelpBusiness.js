@@ -8,8 +8,8 @@ const YelpSearchBusiness = ({ yelp }) => {
       <h2>{item.name}</h2>
       {item.image_url ? <img src={item.image_url} alt='main' /> : null}
       <p>
-        <span><img src={item.rating_img_url_small} alt='rating' /></span>
-        <span>Phone:</span><span>{item.phone}</span>
+        <span id='rate'>{`Rating: ${item.rating}`}</span><br />
+        <span id='phone'>{`Phone: ${item.phone}`}</span>
       </p>
       <a href={item.url}>View on yelp</a>
     </div>

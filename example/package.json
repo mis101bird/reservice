@@ -35,12 +35,13 @@
     "reservice": "*",
     "routr": "^2.1.0",
     "serialize-javascript": "^1.3.0",
-    "yelp": "^1.0.2",
+    "yelp-v3": "0.0.5",
     "yfetch": "0.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-loader": "7.0.0-beta.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^3.19.0",
