@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import YelpSearchItem from './YelpSearchItem'
 
 const YelpSearchList = ({ yelp }) => (yelp.search.map
-  ? <ul>{yelp.search.length
+  ? <ul className='list'>
+    {yelp.search.length
     ? yelp.search.map(item => <YelpSearchItem item={item} key={item.id} />)
     : <li key='not_found'>Not Found!</li>
     }</ul>

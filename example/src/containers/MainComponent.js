@@ -11,15 +11,17 @@ import YelpSearch from '../components/YelpSearch'
 const routeMain = (name) => {
   switch (name) {
     case 'search':
-      return ({ yelp, query, onSubmit }) => (<div>
-        <YelpSearch query={query} onSubmit={onSubmit} />
-        <YelpSearchList yelp={yelp} />
-      </div>)
+      return ({ yelp, query, onSubmit }) => (
+        <div className='main'>
+          <YelpSearch query={query} onSubmit={onSubmit} />
+          <YelpSearchList yelp={yelp} />
+        </div>)
     case 'business':
-      return ({ yelp }) => (<div>
-        <a className='home' href='/'>Back to Home</a>
-        <YelpBusiness yelp={yelp} />
-      </div>)
+      return ({ yelp }) => (
+        <div>
+          <a className='home' href='/'>Back to Home</a>
+          <YelpBusiness yelp={yelp} />
+        </div>)
     default:
       return () => <div>Route not found</div>
   }
