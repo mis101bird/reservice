@@ -9,6 +9,7 @@ import { MainComponent } from '../reduxapp'
 const Html = ({ main, state }) => <html>
   <head>
     <title>{state.metaHeader.title}</title>
+    <link rel='stylesheet' href='/statics/bundle/main.css' />
   </head>
   <body>
     <div id='main' dangerouslySetInnerHTML={{ __html: main }} />

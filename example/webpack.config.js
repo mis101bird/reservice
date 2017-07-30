@@ -1,5 +1,6 @@
 import webpack from 'webpack'
 import path from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const pageSrcPath = path.join(__dirname, '/src/')
 const pagePolyfills = []
@@ -15,6 +16,9 @@ module.exports = {
     path: path.join(__dirname, publicPath),
     publicPath: publicPath + '/'
   },
+  resolve: {
+    extensions: ['.js', '.css']
+  },
   module: {
     rules: [
       {
@@ -28,17 +32,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /(node_modules)/,
-        use: [
+        use: ExtractTextPlugin.extract([
           'style-loader',
-          { loader: 'css-loader', options: { modules: true } },
+          { loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
           { loader: 'postcss-loader',
             options: {
               plugins: (loader) => [
                 require('autoprefixer')({ browsers: ['last 2 versions'] })
               ]
             }
-          }]
+          }])
       }
     ]
   },
@@ -52,6 +61,10 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development'
+    }),
+    new ExtractTextPlugin({
+      filename: 'stylesheets/main.css',
+      allChunks: true
     })
   ]
 }

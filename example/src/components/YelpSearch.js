@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import style from '../style/base.css'
 
-import moduleStyle from '../style/base.css'
+if (process.env.BROWSER) {
+  require('../style/base.css')
+}
 
 class YelpSearch extends React.Component {
   constructor (props) {
@@ -24,7 +27,7 @@ class YelpSearch extends React.Component {
   render () {
     return (
       <form action='/' onSubmit={this.handleSubmit} >
-        <span className={moduleStyle.search}>Search</span>
+        <span className={style.red}>Search</span>
         <input name='term' type='text' value={this.state.term} onChange={this.handleChange} />
         <input type='submit' value='SEARCH' />
       </form>
